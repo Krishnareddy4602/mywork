@@ -79,6 +79,14 @@ st.markdown("""
         margin-bottom: 1rem;
         font-size: 0.95rem;
     }
+    .model-title {
+        text-align: center;
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: #4f3d10;
+        margin-top: 0.25rem;
+        margin-bottom: 0.4rem;
+    }
     .stButton > button {
         background: linear-gradient(135deg, #c9a227 0%, #a88622 100%);
         color: white;
@@ -108,7 +116,7 @@ DEFAULT_OPENAI_MODEL = "gpt-4.1-mini"
 
 def render_result_cards(result: dict, title: str, threshold: float) -> None:
     all_vals = result.get("all_values", {})
-    st.markdown(f"### {title}")
+    st.markdown(f'<p class="model-title">{title}</p>', unsafe_allow_html=True)
     for key in ("ornament_type", "weight_grams", "wastage_percent"):
         item = all_vals.get(key, {})
         val = item.get("value", "—")
